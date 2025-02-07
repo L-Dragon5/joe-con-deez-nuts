@@ -1,0 +1,54 @@
+@keyframes textShine {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 100% 50%;
+  }
+}
+
+.eventTitle {
+  font-size: clamp(3rem, 15vw, 6rem);
+
+  background: linear-gradient(
+    to right,
+    var(--mantine-color-cyan-3) 20%,
+    var(--mantine-color-cyan-7) 30%,
+    var(--mantine-color-green-4) 70%,
+    var(--mantine-color-green-7) 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+}
+
+.mainBodyText {
+  color: var(--mantine-color-gray-2);
+  font-size: clamp(1rem, 2rem, 3rem);
+}
+
+.specialGuestTitle {
+  color: var(--mantine-color-gray-2);
+  font-size: clamp(1.5rem, 2.5rem, 4rem);
+}
+
+.specialGuestDescription {
+  font-size: clamp(1rem, 1.5rem, 2.5rem);
+}
+
+.scheduleTitle {
+  font-size: clamp(1.75rem, 2.5rem, 4rem);
+}
+
+.scheduleDescription {
+  font-size: clamp(1rem, 1.5rem, 2.5rem);
+}
+
+.sectionHeaders {
+  font-size: clamp(2rem, 12vw, 6rem);
+  color: var(--mantine-color-gray-1);
+  text-align: center;
+}
