@@ -24,6 +24,8 @@ import {
 import { theme } from './theme';
 import { motion } from 'motion/react';
 
+import headerImg from '/joe-con-header.png';
+
 import classes from './App.module.css';
 import { useState } from 'react';
 import { useElementSize } from '@mantine/hooks';
@@ -80,10 +82,24 @@ export default function App() {
       </Box>
 
       <Flex ref={ref} className={classes.backgroundFlex}>
+        <Box
+          display={chengo ? 'block' : 'none'}
+          pos="absolute"
+          top="95vh"
+          h={750}
+          w="100%"
+          style={{
+            backgroundImage: `url(${headerImg})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+            zIndex: 1,
+          }}
+        />
         <Box maw="1000px" m="0 auto" p="3rem">
           <Box h="100vh">
             <Center h="100%">
-              <Stack>
+              <Stack style={{ zIndex: 3 }}>
                 <Title
                   order={1}
                   className={classes.eventTitle}
