@@ -6,14 +6,17 @@ import './fonts/JSLAncient.css';
 import './fonts/Dominica.css';
 
 import {
+  Anchor,
   AspectRatio,
   Box,
+  Button,
   Card,
   Center,
   Divider,
   Flex,
   HoverCard,
   MantineProvider,
+  Modal,
   Paper,
   SimpleGrid,
   Stack,
@@ -28,7 +31,7 @@ import headerImg from '/joe-con-header.png';
 
 import classes from './App.module.css';
 import { useState } from 'react';
-import { useElementSize } from '@mantine/hooks';
+import { useDisclosure, useElementSize, useHover } from '@mantine/hooks';
 
 export default function App() {
   const [chengo, setChecked] = useState(false);
@@ -37,15 +40,38 @@ export default function App() {
   const specialGuests = [
     {
       name: 'Phoebe Chan',
-      description: '2.5D idol that everyone loves',
+      description: '2.5D farityale idol that everyone loves',
+      image: 'feebee-anime.png',
+      image2: 'feebee-real.jpg',
+      website: 'https://feebeechanchibi.com/',
+      twitter: 'https://x.com/feebeechanchibi',
+      youtube: 'https://youtube.com/c/feebeechanchibi',
+      instagram: 'https://instagram.com/feebeechanchibi',
     },
     {
       name: 'Pengy',
       description: 'My super talented Florida idol buddy',
+      image: null,
+      twitter: 'https://x.com/Pengy_Time',
+      youtube: 'https://www.youtube.com/channel/UCbfdRXAyPAkZRKJ7_SFPEVQ',
+      instagram: 'https://www.instagram.com/pengy_time',
     },
     {
       name: 'Lavendula',
       description: "Local friend who's an amazing singer",
+      image: 'lavendula.jpg',
+    },
+    {
+      name: 'AniParty',
+      description: 'DJ friends that make you go ie-taiga-faiba-waipa',
+      image: null,
+      twitter: 'https://x.com/anisongparty',
+    },
+    {
+      name: 'AniWaza',
+      description: 'Friends that wave bright glowing sticks around',
+      image: null,
+      twitter: 'https://x.com/aniwazaofficial',
     },
   ];
 
@@ -294,33 +320,126 @@ export default function App() {
               Special Guests
             </Title>
             <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }}>
-              {specialGuests.map((g) => (
-                <Card
-                  key={g.name}
-                  className={classes.paper}
-                  shadow="sm"
-                  radius="md"
-                  withBorder
-                  mod={{ chengo }}
-                >
-                  <Card.Section h="200px">
-                    <Center h="100%">Image pending...</Center>
-                  </Card.Section>
-                  <Title
-                    order={4}
-                    className={classes.specialGuestTitle}
-                    mod={{ chengo }}
-                  >
-                    {g.name}
-                  </Title>
-                  <Text
-                    className={classes.specialGuestDescription}
-                    mod={{ chengo }}
-                  >
-                    {g.description}
-                  </Text>
-                </Card>
-              ))}
+              {specialGuests.map((g) => {
+                const { hovered, ref } = useHover();
+                const [opened, { open, close }] = useDisclosure(false);
+
+                return (
+                  <>
+                    <Modal
+                      key={g.name}
+                      opened={opened}
+                      onClose={close}
+                      title="Social Media Links"
+                    >
+                      <Stack gap="lg" justify="center" align="stretch">
+                        {g?.website && (
+                          <>
+                            <Anchor href={g.website} target="_blank">
+                              Website
+                            </Anchor>
+                            <Divider />
+                          </>
+                        )}
+                        {g?.twitter && (
+                          <>
+                            <Anchor href={g.twitter} target="_blank">
+                              X/Twitter
+                            </Anchor>
+                            <Divider />
+                          </>
+                        )}
+                        {g?.instagram && (
+                          <>
+                            <Anchor href={g.instagram} target="_blank">
+                              Instagram
+                            </Anchor>
+                            <Divider />
+                          </>
+                        )}
+                        {g?.youtube && (
+                          <Anchor href={g.youtube} target="_blank">
+                            YouTube
+                          </Anchor>
+                        )}
+                      </Stack>
+                    </Modal>
+                    <Card
+                      key={g.name}
+                      className={classes.paper}
+                      shadow="sm"
+                      radius="md"
+                      withBorder
+                      mod={{ chengo }}
+                      h="500px"
+                      ref={ref}
+                    >
+                      <Card.Section h="100%" pos="absolute">
+                        <Center h="100%">
+                          {g?.image && (
+                            <img
+                              src={g.image}
+                              style={{
+                                position: 'absolute',
+                                height: '110%',
+                                left: '50%',
+                                transform: 'translate(-15%, -5%)',
+                                width: 'auto',
+                                opacity: hovered && g?.image2 ? 0 : 1,
+                                transition: 'all 0.4s',
+                              }}
+                              alt={g.name}
+                            />
+                          )}
+                          {g?.image2 && (
+                            <img
+                              src={g.image2}
+                              style={{
+                                position: 'absolute',
+                                height: '150%',
+                                left: '50%',
+                                transform: 'translate(-30%, 0)',
+                                width: 'auto',
+                                opacity: hovered ? 1 : 0,
+                                transition: 'all 0.4s',
+                              }}
+                              alt={`${g.name}-2`}
+                            />
+                          )}
+                        </Center>
+                      </Card.Section>
+                      <Center
+                        h="100%"
+                        opacity={hovered ? 1 : 0}
+                        style={{ transition: 'all 0.5s' }}
+                      >
+                        <Card.Section
+                          style={{ zIndex: 2, borderRadius: '0.75rem' }}
+                          p="1rem"
+                          bg="rgba(0,0,0,0.6)"
+                        >
+                          <Title
+                            order={4}
+                            className={classes.specialGuestTitle}
+                            mod={{ chengo }}
+                          >
+                            {g.name}
+                          </Title>
+                          <Text
+                            className={classes.specialGuestDescription}
+                            mod={{ chengo }}
+                          >
+                            {g.description}
+                          </Text>
+                          <Button onClick={open} fullWidth mt="2rem">
+                            Social Media Links
+                          </Button>
+                        </Card.Section>
+                      </Center>
+                    </Card>
+                  </>
+                );
+              })}
             </SimpleGrid>
             <Text
               className={classes.mainBodyText}
@@ -359,6 +478,14 @@ export default function App() {
                 performance set)
               </Text>
               <Text
+                fw="bold"
+                className={classes.scheduleDescription}
+                mod={{ chengo }}
+              >
+                Confirmed People [DJ Names Tentative]: DJ Orly - DJ Cheng - DJ
+                Tenchi - DJoe - Ashes
+              </Text>
+              <Text
                 fs="italic"
                 className={classes.scheduleDescription}
                 mod={{ chengo }}
@@ -375,6 +502,14 @@ export default function App() {
               >
                 Performances
               </Title>
+              <Text
+                fw="bold"
+                className={classes.scheduleDescription}
+                mod={{ chengo }}
+              >
+                Confirmed People: Lavendula, Pengy, Phoebe, AniWaza, Tofu,
+                Zeylia Wing, Joe
+              </Text>
               <Text className={classes.scheduleDescription} mod={{ chengo }}>
                 Consists of my all my talented friends doing singing, dancing,
                 or both. You may even see me...
@@ -412,7 +547,11 @@ export default function App() {
                 Last, but not least, my friends from Aniparty will be closing
                 out the night with some anikura shenanigans!
               </Text>
-              <Text className={classes.scheduleDescription} mod={{ chengo }}>
+              <Text
+                className={classes.scheduleDescription}
+                fw="bold"
+                mod={{ chengo }}
+              >
                 Confirmed DJs: DJ Appare - DJ Dekimasen - DJ Wazahai - DJ
                 Th3rdEye - DJ SignalΔ
               </Text>
