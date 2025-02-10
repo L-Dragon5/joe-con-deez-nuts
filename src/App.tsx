@@ -36,6 +36,10 @@ export default function App() {
 
   const specialGuests = [
     {
+      name: 'Phoebe Chan',
+      description: '2.5D idol that everyone loves',
+    },
+    {
       name: 'Pengy',
       description: 'My super talented Florida idol buddy',
     },
