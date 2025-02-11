@@ -97,13 +97,31 @@
   }
 }
 
+.specialGuestCard {
+  padding: 2rem;
+  background: var(--mantine-color-dark-5);
+
+  background-size: 500px auto;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top 10%;
+
+  &[data-chengo] {
+    background: var(--mantine-color-gray-2);
+
+    background-size: 500px auto;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top 10%;
+  }
+}
+
 .specialGuestTitle {
   color: var(--mantine-color-gray-2);
   font-size: clamp(1.5rem, 2.5rem, 4rem);
 
   &[data-chengo] {
     font-family: 'Dominican Caps', serif;
-    color: var(--mantine-color-dark-6);
   }
 }
 
@@ -112,7 +130,6 @@
 
   &[data-chengo] {
     font-family: 'JSL Ancient', serif;
-    color: var(--mantine-color-dark-6);
   }
 }
 

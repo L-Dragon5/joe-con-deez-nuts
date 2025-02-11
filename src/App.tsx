@@ -40,7 +40,7 @@ export default function App() {
   const specialGuests = [
     {
       name: 'Phoebe Chan',
-      description: '2.5D farityale idol that everyone loves',
+      description: '2.5D fairytale idol that everyone loves',
       image: 'feebee-anime.png',
       image2: 'feebee-real.jpg',
       website: 'https://feebeechanchibi.com/',
@@ -50,8 +50,8 @@ export default function App() {
     },
     {
       name: 'Pengy',
-      description: 'My super talented Florida idol buddy',
-      image: null,
+      description: 'Talented Florida idol buddy',
+      image: 'pengy.jpg',
       twitter: 'https://x.com/Pengy_Time',
       youtube: 'https://www.youtube.com/channel/UCbfdRXAyPAkZRKJ7_SFPEVQ',
       instagram: 'https://www.instagram.com/pengy_time',
@@ -312,7 +312,7 @@ export default function App() {
             style={{ marginTop: '25vh' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <Title
               order={3}
@@ -329,7 +329,7 @@ export default function App() {
                 return (
                   <>
                     <Modal
-                      key={g.name}
+                      key={`modal-${g.name}`}
                       opened={opened}
                       onClose={close}
                       title="Social Media Links"
@@ -367,49 +367,35 @@ export default function App() {
                       </Stack>
                     </Modal>
                     <Card
-                      key={g.name}
-                      className={classes.paper}
+                      key={`card-${g.name}`}
+                      className={classes.specialGuestCard}
                       shadow="sm"
                       radius="md"
                       withBorder
                       mod={{ chengo }}
                       h="500px"
+                      style={{
+                        backgroundImage: `url(${g.image})`,
+                      }}
                       ref={ref}
                     >
-                      <Card.Section h="100%" pos="absolute">
-                        <Center h="100%">
-                          {g?.image && (
-                            <img
-                              src={g.image}
-                              style={{
-                                position: 'absolute',
-                                height: '110%',
-                                left: '50%',
-                                transform: 'translate(-15%, -5%)',
-                                width: 'auto',
-                                opacity: hovered && g?.image2 ? 0 : 1,
-                                transition: 'all 0.4s',
-                              }}
-                              alt={g.name}
-                            />
-                          )}
-                          {g?.image2 && (
-                            <img
-                              src={g.image2}
-                              style={{
-                                position: 'absolute',
-                                height: '150%',
-                                left: '50%',
-                                transform: 'translate(-30%, 0)',
-                                width: 'auto',
-                                opacity: hovered ? 1 : 0,
-                                transition: 'all 0.4s',
-                              }}
-                              alt={`${g.name}-2`}
-                            />
-                          )}
-                        </Center>
-                      </Card.Section>
+                      {g?.image2 && (
+                        <Card.Section
+                          pos="absolute"
+                          top="1rem"
+                          left="1rem"
+                          h="500px"
+                          w="100%"
+                          style={{
+                            opacity: hovered ? 1 : 0,
+                            transition: 'all 0.35s',
+                          }}
+                          bg={`url(${g.image2})`}
+                          bgsz="500px auto"
+                          bgp="center top 10%"
+                          bgr="no-repeat"
+                        />
+                      )}
                       <Center
                         h="100%"
                         opacity={hovered ? 1 : 0}
@@ -457,7 +443,7 @@ export default function App() {
             style={{ marginTop: '25vh' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.25 }}
           >
             <Title
               order={3}
@@ -472,7 +458,7 @@ export default function App() {
                 className={classes.scheduleTitle}
                 mod={{ chengo }}
               >
-                The Dickballing Stage
+                The Dickballin' Stage
               </Title>
               <Text className={classes.scheduleDescription} mod={{ chengo }}>
                 Limited to people who are performing for the 1st time or final
