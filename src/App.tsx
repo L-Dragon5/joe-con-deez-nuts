@@ -60,6 +60,8 @@ export default function App() {
       name: 'Lavendula',
       description: "Local friend who's an amazing singer",
       image: 'lavendula.jpg',
+      twitter: 'https://x.com/lavendulasings',
+      instagram: 'https://www.instagram.com/lavendulasings',
     },
     {
       name: 'AniParty',
