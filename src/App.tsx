@@ -64,15 +64,23 @@ export default function App() {
       instagram: 'https://www.instagram.com/lavendulasings',
     },
     {
+      name: 'Pan Ranger',
+      description: 'Bread + Tokusatsu = ♥',
+      image: 'pan-ranger.jpg',
+      website: 'https://panranger.net/',
+      twitter: 'https://x.com/bakerysentai',
+      instagram: 'https://instagram.com/panranger',
+    },
+    {
       name: 'AniParty',
       description: 'DJ friends that make you go ie-taiga-faiba-waipa',
-      image: null,
+      image: 'aniparty.jpg',
       twitter: 'https://x.com/anisongparty',
     },
     {
       name: 'AniWaza',
       description: 'Friends that wave bright glowing sticks around',
-      image: null,
+      image: 'aniwaza.jpg',
       twitter: 'https://x.com/aniwazaofficial',
     },
   ];
@@ -471,7 +479,7 @@ export default function App() {
                 mod={{ chengo }}
               >
                 Confirmed People [DJ Names Tentative]: DJ Orly - DJ Cheng - DJ
-                Tenchi - DJoe - Ashes
+                Tofu - DJ Tenchi - DJoe - Ashes - Harmony
               </Text>
               <Text
                 fs="italic"
