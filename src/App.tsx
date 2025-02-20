@@ -288,7 +288,8 @@ export default function App() {
                   mod={{ chengo }}
                 >
                   To RSVP, just message Joe however you can and let him know you
-                  can come and any specific +1's you want to bring.
+                  can come and any specific +1's you want to bring. Please RSVP
+                  by March 1st.
                 </Text>
               </Paper>
             </motion.div>
@@ -478,7 +479,7 @@ export default function App() {
                 className={classes.scheduleDescription}
                 mod={{ chengo }}
               >
-                Confirmed People [DJ Names Tentative]: DJ Orly - DJ Cheng - DJ
+                Confirmed People [DJ Names Tentative]: DJ Orly - DJ Y2Kz - DJ
                 Tofu - DJ Tenchi - DJoe - Ashes - Harmony
               </Text>
               <Text
