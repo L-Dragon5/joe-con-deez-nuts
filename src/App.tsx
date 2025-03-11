@@ -15,7 +15,6 @@ import {
   Divider,
   Flex,
   HoverCard,
-  List,
   MantineProvider,
   Modal,
   Paper,
