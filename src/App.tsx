@@ -15,12 +15,14 @@ import {
   Divider,
   Flex,
   HoverCard,
+  List,
   MantineProvider,
   Modal,
   Paper,
   SimpleGrid,
   Stack,
   Switch,
+  Table,
   Text,
   Title,
 } from '@mantine/core';
@@ -245,17 +247,12 @@ export default function App() {
             </Text>
 
             <Text mt="6rem" className={classes.mainBodyText} mod={{ chengo }}>
-              There won't be food provided (but there will be cake). There's a
-              lot of good food places in the area, such as, Ekiben.
+              There won't be food provided (but there will be cake). Scroll down
+              for food recommendation list.
             </Text>
-            <Text className={classes.mainBodyText} mod={{ chengo }}>
+            <Text mt="3rem" className={classes.mainBodyText} mod={{ chengo }}>
               The venue allows food and alcohol, so feel free to grab food and
               then come back. Just be sure to clean after yourselves.
-            </Text>
-
-            <Text mt="6rem" className={classes.mainBodyText} mod={{ chengo }}>
-              There is a max capacity to the venue, so I will be keeping track
-              of RSVPs.
             </Text>
 
             <motion.div
@@ -282,17 +279,66 @@ export default function App() {
                   Instead of a birthday present, I just ask for $20 (only if
                   you're finacially able), to help offset venue costs.
                 </Text>
-                <Text
-                  mt="4rem"
-                  className={classes.mainBodyText}
-                  mod={{ chengo }}
-                >
-                  To RSVP, just message Joe however you can and let him know you
-                  can come and any specific +1's you want to bring. Please RSVP
-                  by March 1st.
-                </Text>
               </Paper>
             </motion.div>
+          </motion.div>
+
+          <motion.div
+            style={{ marginTop: '25vh', marginBottom: '25vh' }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <Title
+              order={3}
+              className={classes.sectionHeaders}
+              mt="2rem"
+              mod={{ chengo }}
+            >
+              Food within Walking Distance
+            </Title>
+            <Text className={classes.mainBodyText} mod={{ chengo }}>
+              This area, Fells Point, is known for food and bars, so there's a
+              lot of good options to try
+            </Text>
+            <Table fz="2rem" c="white">
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>Cuisine</Table.Th>
+                  <Table.Th>Name</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>
+                <Table.Tr>
+                  <Table.Td>Asian Fusion Fried Chicken</Table.Td>
+                  <Table.Td>Ekiben (Personal Recommendation)</Table.Td>
+                </Table.Tr>
+                <Table.Tr>
+                  <Table.Td>Various Options</Table.Td>
+                  <Table.Td>Broadway Market</Table.Td>
+                </Table.Tr>
+                <Table.Tr>
+                  <Table.Td>Chinese Takeout</Table.Td>
+                  <Table.Td>Golden Wok</Table.Td>
+                </Table.Tr>
+                <Table.Tr>
+                  <Table.Td>Pizza</Table.Td>
+                  <Table.Td>Pie in the Sky</Table.Td>
+                </Table.Tr>
+                <Table.Tr>
+                  <Table.Td>Burger</Table.Td>
+                  <Table.Td>Abbey Burger Fells Point</Table.Td>
+                </Table.Tr>
+                <Table.Tr>
+                  <Table.Td>Sushi</Table.Td>
+                  <Table.Td>Nanami Cafe</Table.Td>
+                </Table.Tr>
+                <Table.Tr>
+                  <Table.Td>Mexican</Table.Td>
+                  <Table.Td>BMORE Taquieria</Table.Td>
+                </Table.Tr>
+              </Table.Tbody>
+            </Table>
           </motion.div>
 
           <motion.div
@@ -438,14 +484,6 @@ export default function App() {
                 );
               })}
             </SimpleGrid>
-            <Text
-              className={classes.mainBodyText}
-              mt="2rem"
-              ta="center"
-              mod={{ chengo }}
-            >
-              And more to come...
-            </Text>
           </motion.div>
 
           <motion.div
@@ -459,7 +497,7 @@ export default function App() {
               className={classes.sectionHeaders}
               mod={{ chengo }}
             >
-              Schedule [Tentative]
+              Schedule
             </Title>
             <Stack>
               <Title
@@ -467,7 +505,7 @@ export default function App() {
                 className={classes.scheduleTitle}
                 mod={{ chengo }}
               >
-                The Dickballin' Stage
+                The Dickballin' Stage [4 - 6PM]
               </Title>
               <Text className={classes.scheduleDescription} mod={{ chengo }}>
                 Limited to people who are performing for the 1st time or final
@@ -479,16 +517,7 @@ export default function App() {
                 className={classes.scheduleDescription}
                 mod={{ chengo }}
               >
-                Confirmed People [DJ Names Tentative]: DJ Orly - DJ Y2Kz - DJ
-                Tofu - DJ Tenchi - DJoe - Ashes - Harmony
-              </Text>
-              <Text
-                fs="italic"
-                className={classes.scheduleDescription}
-                mod={{ chengo }}
-              >
-                If you would like to join, let Joe know. Spots are limited and
-                we're halfway filled.
+                DJ Orly - DJ Y2Kz - DJ Tofu - DJ Tenchi - DJoe - Ashes - Harmony
               </Text>
               <Divider />
 
@@ -497,26 +526,18 @@ export default function App() {
                 className={classes.scheduleTitle}
                 mod={{ chengo }}
               >
-                Performances
+                Performances [6:20 - 8:30 PM]
               </Title>
-              <Text
-                fw="bold"
-                className={classes.scheduleDescription}
-                mod={{ chengo }}
-              >
-                Confirmed People: Lavendula, Pengy, Phoebe, AniWaza, Tofu,
-                Zeylia Wing, Joe
-              </Text>
               <Text className={classes.scheduleDescription} mod={{ chengo }}>
                 Consists of my all my talented friends doing singing, dancing,
                 or both. You may even see me...
               </Text>
               <Text
-                fs="italic"
+                fw="bold"
                 className={classes.scheduleDescription}
                 mod={{ chengo }}
               >
-                If you'd like to do something, let Joe know.
+                Phoebe, Katherine, Aniwaza, Lavendula, Pan Ranger, ?Joe?, Pengy,
               </Text>
               <Divider />
 
@@ -538,7 +559,7 @@ export default function App() {
                 className={classes.scheduleTitle}
                 mod={{ chengo }}
               >
-                Aniparty Vol. Joe
+                Aniparty Vol. Joe [9 PM - 12 AM]
               </Title>
               <Text className={classes.scheduleDescription} mod={{ chengo }}>
                 Last, but not least, my friends from Aniparty will be closing
@@ -549,8 +570,7 @@ export default function App() {
                 fw="bold"
                 mod={{ chengo }}
               >
-                Confirmed DJs: DJ Appare - DJ Dekimasen - DJ Wazahai - DJ
-                Th3rdEye - DJ SignalΔ
+                DJ Appare - DJ Dekimasen - DJ Wazahai - DJ Th3rdEye - DJ SignalΔ
               </Text>
               <Divider />
             </Stack>
